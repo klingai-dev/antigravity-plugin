@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "kling-ai": {
+      "serverUrl": "https://kling.ai/mcp/plugin"
+    }
+  }
+}

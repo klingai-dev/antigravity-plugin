@@ -1,0 +1,13 @@
+{
+  "name": "kling-ai-antigravity-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/verify-package.mjs",
+    "test": "node scripts/verify-package.mjs && node --test tests/package.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
