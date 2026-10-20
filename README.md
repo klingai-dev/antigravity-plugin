@@ -5,7 +5,7 @@ Create images and videos through the remote Kling AI MCP. Recommended: V4 for vi
 ## Install
 
 ```bash
-agy plugin install https://github.com/klingai-tech/antigravity-plugin
+agy plugin install https://github.com/klingai-dev/antigravity-plugin
 ```
 
 Alternatively, copy this repository into `.agents/plugins/kling-ai/` in your workspace or `~/.gemini/config/plugins/kling-ai/` globally. Restart Antigravity or reload its customizations as needed. Do not add a second Kling server if the plugin connection is already present.
