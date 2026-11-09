@@ -40,10 +40,10 @@ Prompts, generation settings, reference media, and selected Element IDs are sent
 npm test
 ```
 
-Local checks validate the Antigravity manifest, `serverUrl` connection, three Skill identities, packaged links, and absence of Claude-only commands. Negative tests cover incompatible manifest/config fields and broken references. This does not prove host installation, OAuth, or generation works.
+Local checks validate the Antigravity QA metadata, manifest/package version agreement, bundled PNG logo, `serverUrl` connection, three Skill identities, packaged links, and absence of Claude-only commands. Positive and negative tests cover the complete metadata, missing or invalid logo assets, incompatible manifest/config fields, and broken references. This does not prove host installation, OAuth, or generation works.
 
 In Antigravity, install the plugin, authenticate, inspect the three Skills and Kling tools, and run read-only model/credit and Element queries. Then request a five-second V4 video, inspect the confirmation, approve with sufficient credits, and verify terminal task success and playable output. Repeat the task-status query to confirm it does not generate again. Actual Antigravity OAuth and paid generation have not yet been verified for this package.
 
 ## Source and format
 
-Adapted from [Kling AI for Claude Code](https://github.com/klingai-tech/claude-plugin), source commit `e950640`, using the [Antigravity plugin format](https://antigravity.google/docs/plugins/) and [MCP configuration](https://antigravity.google/docs/mcp/). This independent package starts at version 1.0.0 in `package.json`; the host manifest contains only fields documented by Antigravity. MIT license.
+Adapted from [Kling AI for Claude Code](https://github.com/klingai-tech/claude-plugin), source commit `e950640`, using the [Antigravity plugin format](https://antigravity.google/docs/plugins/) and [MCP configuration](https://antigravity.google/docs/mcp/). This independent package starts at version 1.0.0 in both `package.json` and `plugin.json`. The host manifest includes the display name, version, logo, author, homepage, repository, license, and keywords requested by Antigravity QA. MIT license.

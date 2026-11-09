@@ -11,7 +11,22 @@ const json = (path) => JSON.parse(read(path));
 const pkg = json("package.json");
 const plugin = json("plugin.json");
 const mcp = json("mcp_config.json");
-assert.deepEqual(Object.keys(plugin).sort(), ["$schema", "description", "name"]);
+// Validate the metadata requested by Antigravity QA, not just the minimal manifest.
+assert.deepEqual(Object.keys(plugin).sort(), [
+  "$schema", "name", "displayName", "version", "description", "logo", "author",
+  "homepage", "repository", "license", "keywords",
+].sort(), "unexpected or missing manifest fields");
+assert.equal(plugin.displayName, "Kling AI", "displayName");
+assert.equal(plugin.version, pkg.version, "manifest/package version mismatch");
+assert.equal(plugin.logo, "./assets/kling-logo.png", "logo path");
+const logo = join(root, plugin.logo);
+assert.ok(existsSync(logo) && lstatSync(logo).isFile(), "missing logo file");
+assert.deepEqual(readFileSync(logo).subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), "invalid PNG logo");
+assert.deepEqual(plugin.author, { name: "Kling AI", url: "https://kling.ai" }, "author");
+assert.equal(plugin.homepage, "https://kling.ai", "homepage");
+assert.equal(plugin.repository, "https://github.com/klingai-dev/antigravity-plugin", "repository");
+assert.equal(plugin.license, "MIT", "license");
+assert.deepEqual(plugin.keywords, ["kling-ai", "video-generation", "image-generation", "multimodal", "ai-video"], "keywords");
 assert.equal(plugin.$schema, "https://antigravity.google/schemas/v1/plugin.json");
 assert.equal(plugin.name, "kling-ai");
 assert.ok(plugin.description.trim());
@@ -26,7 +41,7 @@ for (const name of skills) {
 }
 
 const publicFiles = new Set([
-  "plugin.json", "mcp_config.json", "README.md", "LICENSE",
+  "plugin.json", "mcp_config.json", "README.md", "LICENSE", "assets/kling-logo.png",
 ]);
 function collect(directory) {
   for (const name of readdirSync(join(root, directory))) {

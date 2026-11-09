@@ -1,5 +1,22 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "kling-ai",
-  "description": "Generate images and V4 videos with Kling AI. Supports multimodal references, reusable subjects, motion control, and task tracking through secure OAuth."
+  "displayName": "Kling AI",
+  "version": "1.0.0",
+  "description": "Generate images and V4 videos with Kling AI. Supports multimodal references, reusable subjects, motion control, and task tracking through secure OAuth.",
+  "logo": "./assets/kling-logo.png",
+  "author": {
+    "name": "Kling AI",
+    "url": "https://kling.ai"
+  },
+  "homepage": "https://kling.ai",
+  "repository": "https://github.com/klingai-dev/antigravity-plugin",
+  "license": "MIT",
+  "keywords": [
+    "kling-ai",
+    "video-generation",
+    "image-generation",
+    "multimodal",
+    "ai-video"
+  ]
 }
