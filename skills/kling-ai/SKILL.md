@@ -10,6 +10,7 @@ Use only the remote Global MCP configured by this plugin: `https://kling.ai/mcp/
 
 ## Request routing
 
+- For prompt-only requests, return the requested prompt, storyboard, or plan. When a required source asset is missing, request it before account discovery or upload. Keep those steps separate from generation preparation and submission.
 - For image creation or editing, follow [kling-ai-generate-image](../kling-ai-generate-image/SKILL.md): text-to-image, image-to-image, posters, product photos, portraits, covers, and variants.
 - For video generation, model selection, or motion transfer, follow [kling-ai-generate-video](../kling-ai-generate-video/SKILL.md): text-to-video, image-to-video, omni reference, keyframes, motion control, animation, and single-shot or multi-shot video. Discover relevant existing and new entry points before selecting a model, including for pure-text requests.
 - Keep uploads, Elements, motion-library browsing, account operations, credit checks, and task status in this Skill. It also supplies the shared connection, billing, submission, and result rules for both generation Skills.
@@ -56,7 +57,7 @@ Apply only when the user has not specified another choice and the live model sup
 - Images: prefer `2k` for normal delivery and `4k` for commercial or crop-heavy work; use `1k` for drafts or speed. Never lower a higher live default.
 - Videos: prefer `1080p` for normal delivery and supported `4k` for commercial or post-production work; use `720p` for drafts, cost, speed, or model limitations.
 - Generate one result unless more are requested. Use about 5 seconds for one action, about 10 seconds for two connected beats, and longer only when supported and needed. Motion-control duration comes from the selected source and live constraints.
-- Infer `9:16`, `1:1`, or `16:9` from the destination; preserve first-frame composition for image-to-video unless the tool requires an explicit ratio.
+- Infer `9:16`, `1:1`, or `16:9` from the destination; preserve first-frame composition when no ratio was requested. Honor an explicit ratio when the selected tool and model support it with the supplied frame.
 
 ## Failure behavior
 

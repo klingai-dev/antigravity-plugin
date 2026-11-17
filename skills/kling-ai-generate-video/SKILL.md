@@ -13,6 +13,8 @@ V4 is generally available. Recommend V4 for video generation, checking the selec
 
 ## Workflow
 
+For prompt-only work or a missing required source asset, follow the core Skill's routing before discovery. Reuse a supplied prompt verbatim when it fits the request and revise only what is needed.
+
 1. Follow [video model routing](references/model-routing.md) and the core [capability discovery](../kling-ai/references/capability-discovery.md) before choosing a tool/model pair. Discover `text_to_video`, `image_to_video`, and `omni_ref_video` as applicable; include omni reference in model discovery even without attachments. Keep `motion_control` for compatible motion-transfer requests.
 2. Ask only for missing information that materially changes the result: destination and aspect ratio, duration, required references, protected facts, narration or copy, or shot structure.
 3. Create or reuse the UUIDv7 `taskTraceId` for this objective. Use this preparation's `who_am_i` response to select a compatible tool/model pair, then apply [model parameters](../kling-ai/references/model-parameters.md) for output specifications, reference caps, Element types, and sound dependencies. Query unexamined candidates or refresh stale data when needed.
@@ -35,7 +37,7 @@ V4 is generally available. Recommend V4 for video generation, checking the selec
 
 - Prefer `1080p` for normal delivery and supported `4k` for commercial, large-screen, or post-production work. Use `720p` for drafts, speed, credit savings, or model limitations. Never lower a higher live default.
 - Use about 5 seconds for one action or shot, about 10 seconds for dialogue, a complete product action, or two connected beats, and longer only when supported and narratively necessary.
-- For text-to-video, infer `9:16`, `1:1`, or `16:9` from the destination. For image-to-video, preserve the first-frame composition unless the tool requires an explicit ratio.
+- For text-to-video, infer `9:16`, `1:1`, or `16:9` from the destination. For image-to-video, preserve first-frame composition when no ratio was requested. Honor an explicit ratio when the selected tool and model support it with the supplied frame.
 - Use one primary camera movement in a five-second shot. Use multiple shots only when location, time, scale, or information state changes.
 - Do not add unrequested narration, readable text, extra characters, product claims, prices, endorsements, or certifications.
 
