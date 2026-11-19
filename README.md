@@ -1,18 +1,46 @@
 # Kling AI for Google Antigravity
 
-Create images and videos through the remote Kling AI MCP. Recommended: V4 for video generation; use V4 Flash when speed or credit savings are the priority. Supports text-to-image, reference-image editing, text-to-video, omni reference with image/video/audio inputs, reusable subjects (Elements), keyframes, motion control, uploads, credits, and task status. Each combination follows the selected model's live capabilities.
+Create images and videos from Antigravity chat with your Kling AI Global account. The plugin includes a connection to Kling's remote MCP server and three Skills for image generation, video generation, and managing subjects and tasks.
 
-## Install
+## Quick start
+
+### 1. Install the plugin
+
+If you have the Antigravity CLI (`agy`), run this in your terminal.
 
 ```bash
 agy plugin install https://github.com/klingai-dev/antigravity-plugin
 ```
 
-Alternatively, copy this repository into `.agents/plugins/kling-ai/` in your workspace or `~/.gemini/config/plugins/kling-ai/` globally. Restart Antigravity or reload its customizations as needed. Do not add a second Kling server if the plugin connection is already present.
+For a manual install, download or clone the repository and place the plugin folder in one of these locations. The plugin's `plugin.json` should be at the top level of that folder.
 
-## Connect
+- **One workspace** — `.agents/plugins/kling-ai/` under your workspace root.
+- **All workspaces** — `~/.gemini/config/plugins/kling-ai/`.
 
-`mcp_config.json` registers one remote server using `serverUrl`: `https://kling.ai/mcp/plugin`. Open Settings > Customizations, authenticate the Kling server, and complete the host-managed OAuth flow with a Kling AI Global account. In the CLI, use `/mcp` to inspect connection status. No API key or bundled credentials are required. Never paste tokens into chat. Regional accounts and credits are separate.
+Reload Antigravity after a manual install. See [Antigravity's plugin installation guide](https://antigravity.google/docs/plugins/).
+
+### 2. Sign in to Kling AI
+
+- **Antigravity app** — Open **Customizations → Installed → MCP Servers**, find the Kling AI server, and click **Authenticate** if prompted.
+- **Antigravity CLI** — Start an interactive session with `agy`, follow the browser sign-in prompt when the server connects, and use `/mcp` to check its status.
+
+Sign in to your Kling AI Global account in the browser and approve access. If Antigravity asks for an authorization code, enter it in its authorization dialog. [Kling AI Global](https://kling.ai/)
+
+The plugin already configures `https://kling.ai/mcp/plugin` in [`mcp_config.json`](mcp_config.json). OAuth handles sign-in without an API key. If you already connected Kling manually, keep just one Kling connection active. [Kling MCP & CLI guide](https://kling.ai/app/mcp/guide) · [Antigravity MCP authentication](https://antigravity.google/docs/mcp/#authenticate-a-server)
+
+### 3. Verify the connection and create something
+
+Start a chat in Antigravity and try this read-only check.
+
+> Use Kling AI to show my available models and credit balance. Don't generate anything.
+
+Once Antigravity returns your models and balance, try a generation prompt.
+
+> Create a five-second video of waves breaking against a rocky coast at sunrise with Kling AI V4. Show me the settings and wait for my approval before generating.
+
+Generation uses your Kling credits. Review the model, duration, resolution, and any credit estimate before approving. Kling returns a generation ID that you can use to check progress later. When the task succeeds, open the result in Antigravity or follow the media link it returns.
+
+If Kling is missing, check that the plugin is enabled under **Customizations → Installed** or run `agy plugin list` in your terminal. If Kling is listed but disconnected, reopen its authentication flow and confirm you signed in with your Global account.
 
 ## Skills
 
@@ -20,15 +48,14 @@ Alternatively, copy this repository into `.agents/plugins/kling-ai/` in your wor
 - [Image generation](skills/kling-ai-generate-image/SKILL.md): new images, reference editing, and image prompts.
 - [Video generation](skills/kling-ai-generate-video/SKILL.md): V4 recommendations, multimodal references, motion, and shot planning.
 
-## Try it
+## More prompts
 
-- Show my available Kling models and credits without generating anything.
-- List my Elements and show the details of a subject I choose.
-- Use V4 to create a five-second cinematic ocean shot. Show final settings before generating.
-- Combine my image, video, and audio references using a compatible V4 model.
-- Check the status of this generation ID without creating a new task.
+- **Image** — “Use Kling AI to create a product photo of a ceramic mug on a wooden table in soft morning light. Show me the settings before generating.”
+- **Reference video** — “With Kling AI, use my attached photo as the opening frame for a five-second video. Keep the subject in frame as the camera moves closer and ask me to approve before generating.”
+- **Reusable subjects** — “List my Kling Elements and show me the details of the one I select.”
+- **Task status** — “Check Kling generation ID `<generation-id>` and show me the result when it is ready.”
 
-Generation consumes Kling credits. Review the model, prompt, duration, resolution, reference roles, and applicable billing before approving. Each approved intent is submitted once. The Skill discovers model IDs and parameter limits live; it never guesses them. If the host renders a provider App, that App owns refresh. Otherwise the agent queries task status and returns a primary media link. App rendering support must be verified in the target host.
+The available models, reference media, and settings depend on your account and the selected model. If you choose to prioritize speed or credit savings, ask for V4 Flash when it is available for your task.
 
 ## Data handling
 
