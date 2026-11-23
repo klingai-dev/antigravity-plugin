@@ -13,7 +13,7 @@ const plugin = json("plugin.json");
 const mcp = json("mcp_config.json");
 // Validate the metadata requested by Antigravity QA, not just the minimal manifest.
 assert.deepEqual(Object.keys(plugin).sort(), [
-  "$schema", "name", "displayName", "version", "description", "logo", "author",
+  "$schema", "name", "displayName", "version", "description", "logo", "suggestedPrompts", "author",
   "homepage", "repository", "license", "keywords",
 ].sort(), "unexpected or missing manifest fields");
 assert.equal(plugin.displayName, "Kling AI", "displayName");
@@ -30,6 +30,12 @@ assert.deepEqual(plugin.keywords, ["kling-ai", "video-generation", "image-genera
 assert.equal(plugin.$schema, "https://antigravity.google/schemas/v1/plugin.json");
 assert.equal(plugin.name, "kling-ai");
 assert.ok(plugin.description.trim());
+const prompts = plugin.suggestedPrompts;
+assert.ok(
+  Array.isArray(prompts) && prompts.length >= 1 && prompts.length <= 3 &&
+    prompts.every(prompt => typeof prompt === "string" && prompt.trim()),
+  "suggestedPrompts must contain one to three nonblank strings",
+);
 assert.deepEqual(mcp, { mcpServers: { "kling-ai": { serverUrl: "https://kling.ai/mcp/plugin" } } });
 
 const skills = ["kling-ai", "kling-ai-generate-image", "kling-ai-generate-video"];
@@ -60,7 +66,7 @@ for (const path of publicFiles) {
   assert.ok(existsSync(join(root, path)), `missing public file: ${path}`);
   if (!/\.(md|json)$/.test(path)) continue;
   const content = read(path);
-  assert.ok(!path.startsWith("skills/") || !/Claude Code|reload-plugins|\.mcp\.json/.test(content), `Claude-specific instruction in ${path}`);
+  assert.ok(!path.startsWith("skills/") || !/Claude Code|reload-plugins|\.mcp\.json|\bToolSearch\b/.test(content), `Claude-specific instruction in ${path}`);
   if (!path.endsWith(".md")) continue;
   for (const match of content.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
     const target = match[1].split("#")[0];

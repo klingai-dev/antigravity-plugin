@@ -1,6 +1,15 @@
 # Motion and shot planning
 
+## Decide whether to edit
+
+- If the user asks to use their prompt as written, preserve it verbatim. Otherwise, check the supplied prompt for the details that matter to this video, such as subject, action, camera, timing, continuity, and constraints. Leave optional creative details to the model.
+- If the prompt is clear, consistent, and already meets the user's requirements, return or submit it verbatim. Apply the same test to a general request to optimize it. Follow an explicit request for a rewrite or a specific change.
+- Resolve gaps or conflicts using the request and its references. Ask only if an important requirement remains unclear.
+- Make the smallest edit that meets the request or fills a material gap. Append a ready-to-use line from the user verbatim when it can be added without conflict. When adding an ending, retain the requested action, timing, and final position or state. Leave the intervening motion to the model unless the user specifies it. If the selected model requires prompt reference syntax, make only the necessary binding edits. Clarify before submitting if those edits conflict with a request to preserve the prompt verbatim.
+
 ## Motion-first prompt order
+
+Use the relevant items when writing a prompt or filling a specific gap. Establish the action and continuity first. Express abstract quality requests through visible details such as lighting, materials, depth of field, and framing.
 
 1. Format and duration intent.
 2. Opening frame and subject position.
@@ -24,6 +33,8 @@
 
 Do not stack multiple camera-movement verbs into one five-second shot.
 
+For a continuous hand-object interaction, frame the entire action path so the participating hands and object stay visible through the action and its final handoff or placement.
+
 ## Duration and multiple shots
 
 - 5 seconds: one action and one camera movement.
@@ -32,9 +43,12 @@ Do not stack multiple camera-movement verbs into one five-second shot.
 
 For multiple shots, give each shot a duration, framing, one narrative task, subject action, camera movement, and continuity anchor. Shot durations must sum to the total duration. The full plan is still one generation submission.
 
+When a continuous hand-object interaction spans a cut, explicitly repeat the same hand grip, object position and support contact at the outgoing shot's end and the incoming shot's start. Use a brief stable beat only when it fits the requested pacing; continue the action without replaying steps or adding a long pause.
+
 ## Reference media
 
 - A first frame locks the opening composition and motion starts from it.
+- For ordered keyframes, describe the motion between consecutive supplied states and settle into the final state. Add overshoot or a return movement only when requested.
 - A tail frame defines the target ending only when the live model supports it.
 - An identity reference locks face, apparent age, hair, wardrobe, proportions, and distinguishing traits.
 - A product reference locks dimensions, material, label, logo placement, and moving parts.

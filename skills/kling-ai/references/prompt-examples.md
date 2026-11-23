@@ -2,9 +2,23 @@
 
 ## Suggested prompts
 
-- Draw a red panda in a vintage spacesuit floating by a space station window, Earth’s blue glow lighting its face, richly detailed, cinematic look
-- Create a 5-second cinematic video: a mecha warrior crashes down from the sky, shockwave blasting rocks and dust, camera rapidly pushing in with raw power
-- Create a 15-second sneaker marketing short: open with a street hook, cut to product close-ups and on-foot action within three seconds, end on a shoe detail close-up
+**English**
+
+- Use Kling Image 4.0 to generate a series of three 8K images in one request. Show the same red panda in a vintage spacesuit exiting a space station through an airlock, drifting past a porthole, and turning to look at the blue Earth. Keep the panda's appearance and spacesuit consistent across all three images.
+- Use Kling 4.0 to generate a 20-second cinematic video. A mech warrior drops from high above and slams into the ground. The shockwave instantly sends rubble and dust flying as the camera pushes in fast to emphasize the impact.
+- Use Kling 4.0 Flash to create a 20-second, 720p video with my sneaker product photo as the first frame. Have the camera slowly orbit the shoe and hold on a close-up of the upper.
+- Open my Kling AI motion library and show me previews of my saved motions. After I pick one, use a compatible motion control model to apply it to the subject image I provided and generate a video.
+- Use Kling AI to create my first reusable Element named “Xiaobai” from the front and side views of my character, so I can keep the character consistent in future projects.
+
+**简体中文**
+
+- 使用可灵图片 4.0 一次生成 3 张 8K 连续组图。让同一只身穿复古宇航服的小熊猫依次从空间站出舱、掠过舷窗、转身望向蓝色地球
+- 使用可灵 4.0 生成一段 20 秒电影感视频：机甲战士从高空重砸地面，冲击波瞬间震开碎石与尘雾，镜头快速推近，充满力量感
+- 使用可灵 4.0 Flash，把我提供的运动鞋商品图作为首帧，生成一段 20 秒、720p 的视频，镜头缓慢绕过鞋身，最后停在鞋面细节上
+- 使用可灵AI查看动作库，预览已保存的动作；选定后，用可用的动作控制模型将该动作应用到我提供的主体图片生成视频
+- 使用可灵AI将我提供的角色正面图和侧面图保存为第一个可复用主体，命名为“小白”，方便后续创作时保持角色一致
+
+The 8K image example requires live support for the requested resolution, Series Mode, and image count together. If 8K is unavailable, explain the supported options before generation.
 
 ## Natural-language requests
 

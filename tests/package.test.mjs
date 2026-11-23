@@ -34,6 +34,7 @@ test("accepts complete Antigravity QA metadata and bundled logo", t => {
 for (const [name, path, change, diagnostic] of [
   ["unsupported manifest fields", "plugin.json", editManifest(p => { p.commands = "./commands"; }), "unexpected or missing manifest fields"],
   ["missing display metadata", "plugin.json", editManifest(p => { delete p.displayName; }), "unexpected or missing manifest fields"],
+  ["blank starter prompt", "plugin.json", editManifest(p => { p.suggestedPrompts = [" "]; }), "suggestedPrompts"],
   ["mismatched version", "plugin.json", editManifest(p => { p.version = "2.0.0"; }), "manifest/package version mismatch"],
   ["invalid logo path", "plugin.json", editManifest(p => { p.logo = "../outside.png"; }), "logo path"],
   ["invalid author URL", "plugin.json", editManifest(p => { p.author.url = "https://example.com"; }), "author"],
@@ -44,6 +45,7 @@ for (const [name, path, change, diagnostic] of [
   ["invalid PNG logo", "assets/kling-logo.png", () => "not a PNG", "invalid PNG logo"],
   ["legacy MCP URL field", "mcp_config.json", s => s.replace('"serverUrl"', '"url"'), "serverUrl"],
   ["Claude-only instructions", "skills/kling-ai/SKILL.md", s => s + "\nRun /reload-plugins\n", "Claude-specific instruction"],
+  ["Claude-only tool discovery", "skills/kling-ai-generate-video/SKILL.md", s => s + "\nUse `ToolSearch`.\n", "Claude-specific instruction"],
   ["missing reference", "skills/kling-ai/SKILL.md", s => s + "\n[Missing](missing.md)\n", "missing or unpackaged link"],
 ]) {
   test(`rejects ${name}`, t => {

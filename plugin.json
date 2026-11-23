@@ -2,9 +2,14 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "kling-ai",
   "displayName": "Kling AI",
-  "version": "1.0.0",
-  "description": "Generate images and V4 videos with Kling AI. Supports multimodal references, reusable subjects, motion control, and task tracking through secure OAuth.",
+  "version": "1.4.0",
+  "description": "Create and edit images with Kling Image 4.0, generate Kling 4.0 and Flash videos with supported HDR settings, reuse Elements, and track tasks.",
   "logo": "./assets/kling-logo.png",
+  "suggestedPrompts": [
+    "Show my Kling AI models and credit balance.",
+    "Prepare a Kling Image 4.0 product photo of a ceramic mug in soft morning light. Show me the settings before generating.",
+    "Prepare a 5-second 1080p HDR video with Kling 4.0 of neon reflecting on a rain-soaked street. Show me the settings and wait for approval."
+  ],
   "author": {
     "name": "Kling AI",
     "url": "https://kling.ai"
