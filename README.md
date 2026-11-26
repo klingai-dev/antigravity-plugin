@@ -1,94 +1,109 @@
-# Kling AI for Google Antigravity
+# 可灵 AI 国内版 Antigravity 插件（Kling AI CN）
 
-Create images and videos from Antigravity chat with your Kling AI Global account. The plugin includes a connection to Kling's remote MCP server and three Skills for image generation, video generation, and managing subjects and tasks.
+在 Google Antigravity 中用自然语言生成或编辑图片、生成视频、复用主体，并查询任务进度和灵感值。本插件连接 `klingai.com` 的国内版账号，内置远程 MCP 配置和三个 Skill。
 
-## Quick start
+若你的账号在 `kling.ai`，请选择本仓库的 [国际版 `main` 分支](https://github.com/klingai-dev/antigravity-plugin/tree/main)。两区的账号、灵感值和任务各自独立。
 
-To have Antigravity install and connect the plugin, paste this prompt into its chat.
+[可灵 MCP & CLI 官方使用指南（国内版）](https://klingai.com/app/mcp/guide)
+
+## 快速开始
+
+把下面的提示词粘贴到 Antigravity 对话中，让它安装并连接插件。
 
 ```text
-Help me install the Kling AI plugin for Google Antigravity. Run:
+帮我安装 Google Antigravity 的可灵 AI 国内版插件。运行：
 
-agy plugin install https://github.com/klingai-dev/antigravity-plugin
+git clone --branch cn --single-branch https://github.com/klingai-dev/antigravity-plugin.git antigravity-plugin-cn
+cd antigravity-plugin-cn
+agy plugin install .
 
-Confirm that the plugin is enabled and that its `kling-ai` MCP server uses https://kling.ai/mcp/plugin. Then guide me through signing in to my Kling AI Global account in the browser.
+确认 kling-ai-cn 插件已启用，其中 kling-ai MCP 服务使用 https://klingai.com/mcp/plugin。引导我在浏览器中登录可灵国内版账号并授权。
 
-After I authorize access, verify the connection with a read-only check of my available models and credit balance. Once the check succeeds, let me know I’m ready to create with Kling AI.
+授权完成后，只读查询可用模型和灵感值余额，不要生成内容。连接检查成功后告诉我可以开始创作。
 ```
 
-### 1. Install the plugin
+### 1. 安装插件
 
-If you have the Antigravity CLI (`agy`), run this in your terminal.
+安装 Antigravity CLI（`agy`）后，在终端运行：
 
 ```bash
-agy plugin install https://github.com/klingai-dev/antigravity-plugin
+git clone --branch cn --single-branch https://github.com/klingai-dev/antigravity-plugin.git antigravity-plugin-cn
+cd antigravity-plugin-cn
+agy plugin install .
+agy plugin list
 ```
 
-To review a local checkout, run `agy plugin install .` from the repository root, then run `agy plugin list` to check that Kling AI is enabled.
+本地已有仓库时，先切换到 `cn` 分支，再在仓库根目录运行 `agy plugin install .`。通过 `agy plugin list` 确认 **Kling AI CN** 已启用。
 
-For a manual install, download or clone the repository and place the plugin folder in one of these locations. The plugin's `plugin.json` should be at the top level of that folder.
+手动安装时，下载或克隆本仓库的 `cn` 分支，将插件目录放入以下任一位置。`plugin.json` 应位于该目录顶层。
 
-- **One workspace** — `.agents/plugins/kling-ai/` under your workspace root.
-- **All workspaces** — `~/.gemini/config/plugins/kling-ai/`.
+- **单个工作区**：工作区下的 `.agents/plugins/kling-ai-cn/`。
+- **所有工作区**：`~/.gemini/config/plugins/kling-ai-cn/`。
 
-Reload Antigravity after a manual install. See [Antigravity's plugin installation guide](https://antigravity.google/docs/plugins/).
+手动安装后重启或重新加载 Antigravity。参见 [Antigravity 插件安装指南](https://antigravity.google/docs/plugins/)。
 
-If you already use the [Claude Code plugin](https://github.com/klingai-tech/claude-plugin#antigravity-cli), `agy plugin import claude` can import the plugins from that profile. Choose one Kling AI installation and authorize it in Antigravity.
+若已安装 [国内版 Claude 插件](https://github.com/klingai-tech/claude-plugin-cn)，也可以通过 `agy plugin import claude` 导入。请只保留一种可灵接入方式，并在 Antigravity 中完成国内版账号授权。
 
-### 2. Sign in to Kling AI
+### 2. 登录可灵国内版账号
 
-- **Antigravity app** — Open **Customizations → Installed → MCP Servers**, find the Kling AI server, and click **Authenticate** if prompted.
-- **Antigravity CLI** — Start an interactive session with `agy`, follow the browser sign-in prompt when the server connects, and use `/mcp` to check its status.
+- **Antigravity 应用**：打开 **Customizations → Installed → MCP Servers**，找到可灵服务，按提示点击 **Authenticate**。
+- **Antigravity CLI**：运行 `agy` 开始交互会话，在服务连接时按浏览器提示登录，用 `/mcp` 检查连接状态。
 
-Sign in to your Kling AI Global account in the browser and approve access. If Antigravity asks for an authorization code, enter it in its authorization dialog. [Kling AI Global](https://kling.ai/)
+在浏览器中登录 [可灵国内版](https://klingai.com/app) 并授权。如 Antigravity 要求授权码，请在它的授权对话框中输入。
 
-The plugin already configures `https://kling.ai/mcp/plugin` in [`mcp_config.json`](mcp_config.json). OAuth handles sign-in without an API key. If you already connected Kling manually, keep just one Kling connection active. [Kling MCP & CLI guide](https://kling.ai/app/mcp/guide) · [Antigravity MCP authentication](https://antigravity.google/docs/mcp/#authenticate-a-server)
+插件已在 [`mcp_config.json`](mcp_config.json) 中配置 `https://klingai.com/mcp/plugin`，通过 OAuth 登录，无需 API key。如之前手动配置过可灵，请只保留一个有效连接。参见 [Antigravity MCP 授权说明](https://antigravity.google/docs/mcp/#authenticate-a-server)。
 
-### 3. Verify the connection and create something
+从国际版迁移时，请先通过原连接查询尚未完成的任务，再断开原 OAuth 会话、安装国内版插件并重新授权。不要假设国际版的任务和灵感值会转移到国内版。
 
-Start a chat in Antigravity and try this read-only check.
+### 3. 检查连接并开始创作
 
-> Use Kling AI to show my available models and credit balance. Don't generate anything.
+在 Antigravity 中先发送只读查询：
 
-Once Antigravity returns your models and balance, try a generation prompt.
+> 帮我查看当前可灵国内版账号的可用模型和灵感值余额，不要生成内容。
 
-> Prepare a five-second video of waves breaking against a rocky coast at sunrise with Kling 4.0. Show me the settings and wait for my approval before generating.
+查询成功后，可以尝试：
 
-Generation uses your Kling credits. Review the model, duration, resolution, and any credit estimate before approving. Kling returns a generation ID that you can use to check progress later. When the task succeeds, open the result in Antigravity or follow the media link it returns.
+> 用可灵 4.0 准备一段 5 秒视频：日出时，海浪拍打岩石海岸。先展示模型和参数，等我确认后再生成。
 
-If Kling is missing, check that the plugin is enabled under **Customizations → Installed** or run `agy plugin list` in your terminal. If Kling is listed but disconnected, reopen its authentication flow and confirm you signed in with your Global account.
+生成会消耗国内版账号的灵感值。提交前请核对模型、时长、分辨率及服务返回的费用估算。可灵返回任务 ID 后，可在同一会话中查询进度；成功后在 Antigravity 中查看结果，或打开服务返回的媒体链接。
 
-## Skills
+若灵感值不足，请在同一个国内版账号中充值，再回到原会话请求“继续刚才的生成”。插件会先检查已有任务及当前余额，避免重复提交。
 
-- [Kling AI](skills/kling-ai/SKILL.md): routing, subjects, motion library, uploads, credits, tasks, and account switching.
-- [Image generation](skills/kling-ai-generate-image/SKILL.md): prompt writing, image creation and reference editing, including Kling Image 4.0 Series Mode when available.
-- [Video generation](skills/kling-ai-generate-video/SKILL.md): prompts and storyboards, Kling 4.0 and Kling 4.0 Flash model selection, HDR, multimodal references, and motion control.
+若找不到插件，请检查 **Customizations → Installed** 或运行 `agy plugin list`。若服务已列出但未连接，请重新授权并确认使用的是国内版账号。
 
-## More prompts
+## 内置 Skills
 
-- **Image** — “Prepare a Kling Image 4.0 product photo of a ceramic mug on a wooden table in soft morning light. Show me the settings before generating.”
-- **Reference video** — “With Kling AI, use my attached photo as the opening frame for a five-second video. Keep the subject in frame as the camera moves closer and ask me to approve before generating.”
-- **HDR video** — “Prepare a five-second, 1080p HDR video with Kling 4.0. Neon signs reflect off a rain-soaked street as the camera slowly moves forward. Show me the settings before generating.”
-- **Reusable subjects** — “List my Kling Elements and show me the details of the one I select.”
-- **Task status** — “Check Kling generation ID `<generation-id>` and show me the result when it is ready.”
+- [可灵 AI](skills/kling-ai/SKILL.md)：请求路由、主体库、动作库、上传、灵感值、任务和账号切换。
+- [图片生成](skills/kling-ai-generate-image/SKILL.md)：提示词、文生图、参考图编辑，以及账号支持时的可灵图片 4.0 连续组图。
+- [视频生成](skills/kling-ai-generate-video/SKILL.md)：提示词与分镜、可灵 4.0 / Flash 模型选择、HDR、多模态参考和动作控制。
 
-The available models, reference media, and settings depend on your account and the selected model. If you choose to prioritize speed or credit savings, ask for Kling 4.0 Flash when it is available for your task.
+## 更多提示词
 
-## Data handling
+- **图片**：“用可灵图片 4.0 准备一张木桌上的陶瓷杯产品图，采用柔和的晨光。生成前先展示设置。”
+- **图生视频**：“用我附上的图片作为首帧，准备一段 5 秒视频。镜头缓慢推近，主体始终留在画面中。生成前等我确认。”
+- **HDR 视频**：“用可灵 4.0 准备一段 5 秒、1080p 的 HDR 视频：雨后街道映着霓虹灯，镜头沿路面缓慢前移。先展示设置。”
+- **主体复用**：“列出我的可灵主体，等我选择后再查看详情。”
+- **任务查询**：“查询可灵任务 `<generation-id>`，完成后给我结果。”
 
-Prompts, generation settings, reference media, and selected Element IDs are sent to Kling. Local files are uploaded only when needed through Kling's upload flow. Generation and subject storage run on the remote service. Content can contain personal information. Kling's [Privacy Policy](https://kling.ai/docs/privacy-policy) describes processing and retention based on service, business, and legal needs; it does not promise deletion of all data within 30 days. See also [Terms of Service](https://kling.ai/docs/user-policy). Support: support@kling.ai.
+可用模型、参考素材类型和参数以当前账号的实时服务返回为准。需要优先考虑速度或灵感值消耗时，可要求使用当前任务支持的可灵 4.0 Flash。
 
-## Validation and reviewer testing
+## 国内版服务政策与数据流
+
+提示词、生成参数、参考素材及选用的主体 ID 会发送给可灵。需要本地参考文件时，插件按服务返回的上传流程上传文件；生成与主体存储由远程服务执行。账号和任务查询也会访问可灵服务。不要记录上传票据或带签名的素材链接。
+
+请参阅国内版的 [隐私政策](https://klingai.com/docs/privacy-policy) 及 [用户服务协议与支持联系方式](https://klingai.com/docs/user-policy)，了解账号、内容存储、删除和付费服务条款。插件不处理支付或代购灵感值，也不承诺固定的数据保留期限。
+
+## 验证与人工验收
 
 ```bash
 npm test
 agy plugin validate --strict .
 ```
 
-`npm test` checks the Antigravity manifest and starter prompts, version agreement, bundled PNG logo, `serverUrl` connection, three Skill identities, packaged links, and absence of Claude-only commands. `agy plugin validate --strict .` checks that the Antigravity CLI recognizes the manifest, Skills, and MCP configuration.
+`npm test` 检查 Antigravity 元数据与推荐提示词、版本一致性、PNG 图标、国内版 `serverUrl`、三个 Skill 的标识、包内链接，以及是否混入 Claude 专用指令。`agy plugin validate --strict .` 检查 Antigravity CLI 是否识别插件清单、Skills 和 MCP 配置。
 
-In Antigravity, install the plugin, authenticate, inspect the three Skills and Kling tools, and run read-only model, credit, and Element queries. Then request a five-second Kling 4.0 video, inspect the confirmation, approve with sufficient credits, and verify terminal task success and playable output. If the live model offers HDR, verify that the confirmation includes HDR and a compatible resolution. Repeat the task-status query to check that it only retrieves the original task.
+人工验收时，在 Antigravity 安装并授权国内版账号，检查三个 Skill 和可灵工具，执行模型、灵感值、主体的只读查询。随后准备一段 5 秒的可灵 4.0 视频，核对设置，在余额充足并明确批准后提交，确认任务成功且视频可播放。若实时模型支持 HDR，核对确认信息中的 HDR 和兼容分辨率。再次查询同一任务，确认只获取原任务状态。
 
-## Source and format
+## 来源与格式
 
-The Skills track [Kling AI for Claude Code at `ed12ef8`](https://github.com/klingai-tech/claude-plugin/tree/ed12ef8524580c07d53aabde8eb8fd11dccf65ff/skills). Version 1.4.0 uses the [Antigravity plugin format](https://antigravity.google/docs/build-plugins/) and [native MCP configuration](https://antigravity.google/docs/mcp/). MIT license.
+本分支基于国际版 `main`，参考 [可灵国内版 Claude 插件](https://github.com/klingai-tech/claude-plugin-cn) 调整服务区域与说明，保留 Antigravity 的原生配置和工作流。版本为 1.4.0，采用 [Antigravity 插件格式](https://antigravity.google/docs/build-plugins/) 和 [原生 MCP 配置](https://antigravity.google/docs/mcp/)，以 MIT 协议开源。

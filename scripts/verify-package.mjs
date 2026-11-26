@@ -16,19 +16,19 @@ assert.deepEqual(Object.keys(plugin).sort(), [
   "$schema", "name", "displayName", "version", "description", "logo", "suggestedPrompts", "author",
   "homepage", "repository", "license", "keywords",
 ].sort(), "unexpected or missing manifest fields");
-assert.equal(plugin.displayName, "Kling AI", "displayName");
+assert.equal(plugin.displayName, "Kling AI CN", "displayName");
 assert.equal(plugin.version, pkg.version, "manifest/package version mismatch");
 assert.equal(plugin.logo, "./assets/kling-logo.png", "logo path");
 const logo = join(root, plugin.logo);
 assert.ok(existsSync(logo) && lstatSync(logo).isFile(), "missing logo file");
 assert.deepEqual(readFileSync(logo).subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), "invalid PNG logo");
-assert.deepEqual(plugin.author, { name: "Kling AI", url: "https://kling.ai" }, "author");
-assert.equal(plugin.homepage, "https://kling.ai", "homepage");
+assert.deepEqual(plugin.author, { name: "Kling AI", url: "https://klingai.com/app" }, "author");
+assert.equal(plugin.homepage, "https://klingai.com/app", "homepage");
 assert.equal(plugin.repository, "https://github.com/klingai-dev/antigravity-plugin", "repository");
 assert.equal(plugin.license, "MIT", "license");
-assert.deepEqual(plugin.keywords, ["kling-ai", "video-generation", "image-generation", "multimodal", "ai-video"], "keywords");
+assert.deepEqual(plugin.keywords, ["kling-ai", "video-generation", "image-generation", "multimodal", "ai-video", "china"], "keywords");
 assert.equal(plugin.$schema, "https://antigravity.google/schemas/v1/plugin.json");
-assert.equal(plugin.name, "kling-ai");
+assert.equal(plugin.name, "kling-ai-cn");
 assert.ok(plugin.description.trim());
 const prompts = plugin.suggestedPrompts;
 assert.ok(
@@ -36,7 +36,7 @@ assert.ok(
     prompts.every(prompt => typeof prompt === "string" && prompt.trim()),
   "suggestedPrompts must contain one to three nonblank strings",
 );
-assert.deepEqual(mcp, { mcpServers: { "kling-ai": { serverUrl: "https://kling.ai/mcp/plugin" } } });
+assert.deepEqual(mcp, { mcpServers: { "kling-ai": { serverUrl: "https://klingai.com/mcp/plugin" } } });
 
 const skills = ["kling-ai", "kling-ai-generate-image", "kling-ai-generate-video"];
 for (const name of skills) {

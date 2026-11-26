@@ -1,20 +1,20 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
-  "name": "kling-ai",
-  "displayName": "Kling AI",
+  "name": "kling-ai-cn",
+  "displayName": "Kling AI CN",
   "version": "1.4.0",
-  "description": "Create and edit images with Kling Image 4.0, generate Kling 4.0 and Flash videos with supported HDR settings, reuse Elements, and track tasks.",
+  "description": "可灵 AI 国内版插件：使用可灵图片 4.0 生成和编辑图片，使用可灵 4.0 与 Flash 生成视频，支持可用的 HDR 设置、主体复用和任务查询。",
   "logo": "./assets/kling-logo.png",
   "suggestedPrompts": [
-    "Show my Kling AI models and credit balance.",
-    "Prepare a Kling Image 4.0 product photo of a ceramic mug in soft morning light. Show me the settings before generating.",
-    "Prepare a 5-second 1080p HDR video with Kling 4.0 of neon reflecting on a rain-soaked street. Show me the settings and wait for approval."
+    "查看我的可灵国内版账号可用模型和灵感值余额，不要生成内容。",
+    "用可灵图片 4.0 准备一张陶瓷杯产品图，采用柔和的晨光。生成前先展示设置，等我确认。",
+    "用可灵 4.0 准备一段 5 秒、1080p 的 HDR 视频：雨后街道映着霓虹灯。先展示设置，等我确认后再生成。"
   ],
   "author": {
     "name": "Kling AI",
-    "url": "https://kling.ai"
+    "url": "https://klingai.com/app"
   },
-  "homepage": "https://kling.ai",
+  "homepage": "https://klingai.com/app",
   "repository": "https://github.com/klingai-dev/antigravity-plugin",
   "license": "MIT",
   "keywords": [
@@ -22,6 +22,7 @@
     "video-generation",
     "image-generation",
     "multimodal",
-    "ai-video"
+    "ai-video",
+    "china"
   ]
 }

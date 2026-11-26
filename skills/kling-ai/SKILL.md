@@ -6,7 +6,7 @@ license: MIT
 
 # Kling AI for Antigravity
 
-Use only the remote Global MCP configured in this plugin's `mcp_config.json` at `https://kling.ai/mcp/plugin`. Do not switch regions, register a second Kling MCP, or start or depend on a local MCP server.
+Use only the remote China MCP configured in this plugin's `mcp_config.json` at `https://klingai.com/mcp/plugin`. Do not switch regions, register a second Kling MCP, or start or depend on a local MCP server.
 
 ## Request routing
 
@@ -19,7 +19,7 @@ Use only the remote Global MCP configured in this plugin's `mcp_config.json` at 
 - Account and credits: use `query_membership_and_credits`; model capabilities come from `who_am_i`.
 - Existing tasks or missing results: use [task status refresh](references/tool-workflows.md#task-status-refresh) with a known `generationId`. A status or library request never creates a generation.
 - To continue after recharging, follow [resuming after insufficient credits](references/tool-workflows.md#resuming-after-insufficient-credits). Check any known task before preparing a new submission. If the user only reports that they recharged, refresh the balance and explain the next step.
-- Sign-out or account switching: act only on an explicit user request, stay on the Global endpoint, and complete native Antigravity OAuth before further Kling calls.
+- Sign-out or account switching: act only on an explicit user request, stay on the China endpoint, and complete native Antigravity OAuth before further Kling calls.
 
 Call only tools present in the live tool list. An attachment alone does not determine its role; clarify only when first frame, tail frame, identity/product reference, editable source, motion source, or style reference would materially change the request.
 
