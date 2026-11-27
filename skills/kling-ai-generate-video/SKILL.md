@@ -5,6 +5,9 @@ description: Write Kling AI / 可灵 video prompts and storyboards, prepare vide
 
 # Kling AI video generation
 
+Before using the creative rules below, follow [creative workflow routing](../kling-ai/references/workflow-routing.md), including prompt-only work and direct Skill invocation. Continue an existing route without rediscovery. A selected remote package owns the objective; stop using bundled creative guidance and follow its entry and required files. On `direct`, preserve the original prompt/settings and use execution checks only. Apply the creative defaults below only on `bundled`. Incomplete tool discovery or catalog/read failure blocks automatic local fallback.
+
+
 Deliver the user's current step. Use the execution workflow only when preparing or submitting generation. The [core Kling Skill](../kling-ai/SKILL.md) owns OAuth, billing, task identity and result handling.
 
 ## Choose the current step

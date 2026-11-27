@@ -5,6 +5,9 @@ description: Write or refine Kling AI image prompts, including prompt-only reque
 
 # Kling AI image generation
 
+Before using the creative rules below, follow [creative workflow routing](../kling-ai/references/workflow-routing.md), including prompt-only work and direct Skill invocation. Continue an existing route without rediscovery. A selected remote package owns the objective; stop using bundled creative guidance and follow its entry and required files. On `direct`, preserve the original prompt/settings and use execution checks only. Apply the creative defaults below only on `bundled`. Incomplete tool discovery or catalog/read failure blocks automatic local fallback.
+
+
 For prompt-only work, use [prompt construction](references/prompt-construction.md)
 to decide whether the prompt needs edits, then return the requested prompt.
 Preserve composition requirements such as left-side copy space.

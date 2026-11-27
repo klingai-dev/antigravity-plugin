@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/verify-package.mjs",
-    "test": "node scripts/verify-package.mjs && node --test tests/package.test.mjs"
+    "test": "node scripts/verify-package.mjs && node --test tests/*.test.mjs",
+    "test:routing": "node scripts/test-workflow-routing.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "kling-ai": {
-      "serverUrl": "https://kling.ai/mcp/plugin"
+      "serverUrl": "https://kling-ai-sgp.prt.kuaishou.com/mcp"
     }
   }
 }

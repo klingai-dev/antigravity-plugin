@@ -2,11 +2,11 @@
 
 ## MCP tools are missing
 
-Verify that the plugin's Kling AI server is enabled and points to `https://kling.ai/mcp/plugin`. In the app, check **Customizations → Installed → MCP Servers**. In the CLI, use `agy plugin list` to check the plugin and `/mcp` to check the server. Reload the connection through the MCP manager or restart Antigravity after updating plugin files. If the tool definitions remain stale, check its MCP diagnostics. Do not add a duplicate server or use an API key as a workaround.
+Verify that the plugin's Kling AI server is enabled and points to `https://kling-ai-sgp.prt.kuaishou.com/mcp`. In the app, check **Customizations → Installed → MCP Servers**. In the CLI, use `agy plugin list` to check the plugin and `/mcp` to check the server. Reload the connection through the MCP manager or restart Antigravity after updating plugin files. If the tool definitions remain stale, check its MCP diagnostics. Do not add a duplicate server or use an API key as a workaround.
 
 ## Endpoint migration and authorization
 
-This plugin uses the Global endpoint `https://kling.ai/mcp/plugin`. The `https://klingai.com/mcp` endpoint belongs to a different region. If migrating an existing regional connection, retain outstanding task numbers and finish their status checks through the original connection. Disconnect the old host-managed OAuth session, update the plugin, then authorize the Global account in Antigravity. Never transfer credentials between hosts or assume that regional task history and credits are shared.
+This plugin uses the Global endpoint `https://kling-ai-sgp.prt.kuaishou.com/mcp`. The `https://kling-ai.prt.kuaishou.com/mcp` endpoint belongs to a different region. If migrating an existing regional connection, retain outstanding task numbers and finish their status checks through the original connection. Disconnect the old host-managed OAuth session, update the plugin, then authorize the Global account in Antigravity. Never transfer credentials between hosts or assume that regional task history and credits are shared.
 
 For an authorization failure, use **Customizations → Installed → MCP Servers** in the app and authenticate the plugin's Kling AI server. In the CLI, follow the browser sign-in prompt and use `/mcp` to verify the connection. If sign-out or account switching was explicitly requested, call the live `logout` tool as documented and reauthorize before other Kling calls. Do not paste tokens, construct OAuth URLs manually, or add an `oauth_resource` override. Reloading plugin files does not refresh OAuth credentials.
 

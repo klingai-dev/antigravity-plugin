@@ -1,5 +1,8 @@
 # Kling AI for Google Antigravity
 
+PRT branch `prt-global` uses `https://kling-ai-sgp.prt.kuaishou.com/mcp`. Load this branch for PRT review; public marketplace installation instructions refer to the production release. Creative requests first discover the complete tool declarations and remote workflow catalog, including text-only plans. Search misses, truncated results and incomplete declarations pause routing instead of enabling local fallback.
+
+
 Create images and videos from Antigravity chat with your Kling AI Global account. The plugin includes a connection to Kling's remote MCP server and three Skills for image generation, video generation, and managing subjects and tasks.
 
 ## Quick start
@@ -11,7 +14,7 @@ Help me install the Kling AI plugin for Google Antigravity. Run:
 
 agy plugin install https://github.com/klingai-dev/antigravity-plugin
 
-Confirm that the plugin is enabled and that its `kling-ai` MCP server uses https://kling.ai/mcp/plugin. Then guide me through signing in to my Kling AI Global account in the browser.
+Confirm that the plugin is enabled and that its `kling-ai` MCP server uses https://kling-ai-sgp.prt.kuaishou.com/mcp. Then guide me through signing in to my Kling AI Global account in the browser.
 
 After I authorize access, verify the connection with a read-only check of my available models and credit balance. Once the check succeeds, let me know I’m ready to create with Kling AI.
 ```
@@ -42,7 +45,7 @@ If you already use the [Claude Code plugin](https://github.com/klingai-tech/clau
 
 Sign in to your Kling AI Global account in the browser and approve access. If Antigravity asks for an authorization code, enter it in its authorization dialog. [Kling AI Global](https://kling.ai/)
 
-The plugin already configures `https://kling.ai/mcp/plugin` in [`mcp_config.json`](mcp_config.json). OAuth handles sign-in without an API key. If you already connected Kling manually, keep just one Kling connection active. [Kling MCP & CLI guide](https://kling.ai/app/mcp/guide) · [Antigravity MCP authentication](https://antigravity.google/docs/mcp/#authenticate-a-server)
+The plugin already configures `https://kling-ai-sgp.prt.kuaishou.com/mcp` in [`mcp_config.json`](mcp_config.json). OAuth handles sign-in without an API key. If you already connected Kling manually, keep just one Kling connection active. [Kling MCP & CLI guide](https://kling.ai/app/mcp/guide) · [Antigravity MCP authentication](https://antigravity.google/docs/mcp/#authenticate-a-server)
 
 ### 3. Verify the connection and create something
 

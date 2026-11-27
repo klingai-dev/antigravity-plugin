@@ -36,7 +36,7 @@ assert.ok(
     prompts.every(prompt => typeof prompt === "string" && prompt.trim()),
   "suggestedPrompts must contain one to three nonblank strings",
 );
-assert.deepEqual(mcp, { mcpServers: { "kling-ai": { serverUrl: "https://kling.ai/mcp/plugin" } } });
+assert.deepEqual(mcp, { mcpServers: { "kling-ai": { serverUrl: "https://kling-ai-sgp.prt.kuaishou.com/mcp" } } });
 
 const skills = ["kling-ai", "kling-ai-generate-image", "kling-ai-generate-video"];
 for (const name of skills) {
