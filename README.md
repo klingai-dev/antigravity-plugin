@@ -1,5 +1,8 @@
 # 可灵 AI 国内版 Antigravity 插件（Kling AI CN）
 
+PRT branch `prt-cn` uses `https://kling-ai.prt.kuaishou.com/mcp`. Load this branch for PRT review; public marketplace installation instructions refer to the production release. Creative requests first discover the complete tool declarations and remote workflow catalog, including text-only plans. Search misses, truncated results and incomplete declarations pause routing instead of enabling local fallback.
+
+
 在 Google Antigravity 中用自然语言生成或编辑图片、生成视频、复用主体，并查询任务进度和灵感值。本插件连接 `klingai.com` 的国内版账号，内置远程 MCP 配置和三个 Skill。
 
 若你的账号在 `kling.ai`，请选择本仓库的 [国际版 `main` 分支](https://github.com/klingai-dev/antigravity-plugin/tree/main)。两区的账号、灵感值和任务各自独立。
@@ -17,7 +20,7 @@ git clone --branch cn --single-branch https://github.com/klingai-dev/antigravity
 cd antigravity-plugin-cn
 agy plugin install .
 
-确认 kling-ai-cn 插件已启用，其中 kling-ai MCP 服务使用 https://klingai.com/mcp/plugin。引导我在浏览器中登录可灵国内版账号并授权。
+确认 kling-ai-cn 插件已启用，其中 kling-ai MCP 服务使用 https://kling-ai.prt.kuaishou.com/mcp。引导我在浏览器中登录可灵国内版账号并授权。
 
 授权完成后，只读查询可用模型和灵感值余额，不要生成内容。连接检查成功后告诉我可以开始创作。
 ```
@@ -51,7 +54,7 @@ agy plugin list
 
 在浏览器中登录 [可灵国内版](https://klingai.com/app) 并授权。如 Antigravity 要求授权码，请在它的授权对话框中输入。
 
-插件已在 [`mcp_config.json`](mcp_config.json) 中配置 `https://klingai.com/mcp/plugin`，通过 OAuth 登录，无需 API key。如之前手动配置过可灵，请只保留一个有效连接。参见 [Antigravity MCP 授权说明](https://antigravity.google/docs/mcp/#authenticate-a-server)。
+插件已在 [`mcp_config.json`](mcp_config.json) 中配置 `https://kling-ai.prt.kuaishou.com/mcp`，通过 OAuth 登录，无需 API key。如之前手动配置过可灵，请只保留一个有效连接。参见 [Antigravity MCP 授权说明](https://antigravity.google/docs/mcp/#authenticate-a-server)。
 
 从国际版迁移时，请先通过原连接查询尚未完成的任务，再断开原 OAuth 会话、安装国内版插件并重新授权。不要假设国际版的任务和灵感值会转移到国内版。
 

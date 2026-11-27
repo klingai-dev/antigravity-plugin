@@ -6,9 +6,15 @@ license: MIT
 
 # Kling AI for Antigravity
 
-Use only the remote China MCP configured in this plugin's `mcp_config.json` at `https://klingai.com/mcp/plugin`. Do not switch regions, register a second Kling MCP, or start or depend on a local MCP server.
+Use only the remote China MCP configured in this plugin's `mcp_config.json` at `https://kling-ai.prt.kuaishou.com/mcp`. Do not switch regions, register a second Kling MCP, or start or depend on a local MCP server.
 
 ## Request routing
+
+Before applying creative guidance, follow [creative workflow routing](references/workflow-routing.md) for every new objective, including prompt-only writing, storyboards, and advertising plans. First check submission state: query a known `generationId` on its original connection; an attempted submission without a confirmed ID remains blocked. Reuse an existing `direct`, `bundled`, or `remote` route and its package/version and stage for continuation. Only an explicit request to preserve a completed plan and skip creative workflows selects direct execution; a detailed prompt alone does not.
+
+Obtain the configured connection's complete tool declarations, including all pagination. A search miss, similar-tool result, truncated result, or incomplete declaration does not prove that `skill_catalog` is absent. If complete declarations cannot be obtained, preserve the request and report the limitation, then pause routing before bundled creative steps. For text-only work, use currently accessible discovery without initiating login or querying models/credits.
+
+A loaded remote package owns creative instructions and required file reads; stop applying bundled creative guidance and defaults for that objective. Direct execution preserves the original prompt and confirmed settings and performs only necessary execution checks. The creative steps and defaults below apply only to the bundled route. Routing does not authorize generation, uploads, or extra deliverables.
 
 - Identify whether the user wants creative writing, a generation proposal, a submission, or an existing-task query. Creative writing ends with the requested prompt or plan. A generation proposal uses live capability discovery and ends with the settings for review. Submit only after approval under the billing rules below.
 - For image prompts, creation, or editing, follow [kling-ai-generate-image](../kling-ai-generate-image/SKILL.md).
